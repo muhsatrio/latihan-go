@@ -98,4 +98,80 @@ func main() {
 			fmt.Println("C")
 		}
 	}
+
+	// Perulangan dengan for standar
+	for i := 0; i < 3; i++ {
+		fmt.Println(i)
+	}
+
+	// Penggunaan for yang seperti while
+	var i = 0
+	for i < 5 {
+		fmt.Println(i)
+		i++
+	}
+
+	// Penggunaan for yang selalu bernilai true
+	i = 0
+	for {
+		fmt.Println(i)
+		i++
+		if i == 5 {
+			break
+		}
+	}
+
+	for j := 1; j <= 5; j++ {
+		for k := 0; k < j; k++ {
+			fmt.Print('0')
+		}
+		fmt.Println()
+	}
+
+	// Inisialisasi nilai awal array
+	var nama = [3]string{"Muhammad", "Satrio", "Wicaksono"}
+	fmt.Println("Jumlah array:", len(nama))
+	fmt.Println("Isi array:", nama)
+
+	// Inisialisasi nilai awal array secara vertikal
+	var buah = [3]string{
+		"pepaya",
+		"pisang",
+		"jambu",
+	}
+	fmt.Println("Buah buahan:", buah)
+
+	// Inisialisasi awal array dengan jumlah otomatis
+
+	var sayur = [...]string{
+		"bayam",
+		"kol",
+		"tomat",
+	}
+	fmt.Println("Sayur:", sayur)
+
+	// Deklarasi variabel multidimensi
+	var grid = [2][2]int{{1, 2}, {2, 3}}
+	fmt.Println(grid)
+
+	// Iterasi array menggunakan len
+	for i := 0; i < len(buah); i++ {
+		fmt.Println(buah[i])
+	}
+
+	// Iterias array menggunakan range
+	for i, syr := range sayur {
+		fmt.Println(i, syr)
+	}
+
+	// Iterasi array menggunakan range tanpa number
+	for _, syr := range sayur {
+		fmt.Println(syr)
+	}
+
+	// Penggunaan make untuk alokasi array
+	var fruits = make([]string, 2)
+	fruits[0] = "apple"
+	fruits[1] = "manggo"
+	fmt.Println(fruits)
 }
