@@ -148,7 +148,10 @@ func main() {
 		"kol",
 		"tomat",
 	}
+
 	fmt.Println("Sayur:", sayur)
+
+	fmt.Println(sayur[0:2])
 
 	// Deklarasi variabel multidimensi
 	var grid = [2][2]int{{1, 2}, {2, 3}}
@@ -159,7 +162,7 @@ func main() {
 		fmt.Println(buah[i])
 	}
 
-	// Iterias array menggunakan range
+	// Iterasi array menggunakan range
 	for i, syr := range sayur {
 		fmt.Println(i, syr)
 	}
@@ -174,4 +177,16 @@ func main() {
 	fruits[0] = "apple"
 	fruits[1] = "manggo"
 	fmt.Println(fruits)
+
+	// Penggunaan slice, slice tidak perlu mendefinisikan jumlah elemen pada awal deklarasi
+
+	var vehicles = []string{"mobil", "motor", "perahu", "pesawat"}
+
+	fmt.Println(vehicles[0:2]) //dimulai dari indeks-0, sampai SEBELUM indeks-2
+	fmt.Println(vehicles[2:])  //semua elemen mulai dari indeks ke-2
+	fmt.Println(vehicles[:2])  //semua elemen sampai indeks sebelum ke-2
+
+	// newVehicles := vehicles[0:2:5]
+	// fmt.Println(cap(newVehicles))
+
 }
