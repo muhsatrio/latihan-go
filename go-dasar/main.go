@@ -186,7 +186,64 @@ func main() {
 	fmt.Println(vehicles[2:])  //semua elemen mulai dari indeks ke-2
 	fmt.Println(vehicles[:2])  //semua elemen sampai indeks sebelum ke-2
 
-	// newVehicles := vehicles[0:2:5]
-	// fmt.Println(cap(newVehicles))
+	// fungsi len untuk menghitung panjang array
+	fmt.Println("Length:", len(vehicles))
 
+	// fungsi len untuk menghitung kapasitas array
+	vehiclesNew := vehicles[0:2]
+	fmt.Println("Length:", len(vehiclesNew))
+	fmt.Println("Capacity:", cap(vehiclesNew))
+	fmt.Println("Capacity:", cap(vehicles[1:3]))
+
+	// fungsi append untuk menambah element pada slice
+	vehicles = append(vehicles, "sepeda")
+	fmt.Println(vehicles)
+
+	// Penggunaan map
+	var chicken = map[string]int{}
+	chicken["test"] = 50
+	fmt.Println(chicken["test"])
+
+	// Definisi map di awal
+	var identitas = map[string]string{
+		"firstName": "Muhammad",
+		"lastName":  "Satrio",
+		"NIM":       "1301150052",
+		"Kelas":     "IF-39-10",
+	}
+	fmt.Println(identitas)
+
+	// Iterasi menggunakan map
+	for key, val := range identitas {
+		fmt.Println(key, ": ", val)
+	}
+
+	// Menghapus nama terakhir di map identitas
+	delete(identitas, "lastName")
+	for key, val := range identitas {
+		fmt.Println(key, ": ", val)
+	}
+
+	// Cek apakah data kelas ada di map
+	var _, isExist = identitas["Kelas"]
+
+	if isExist {
+		fmt.Println("Ada")
+	} else {
+		fmt.Println("Tidak ada")
+	}
+
+	// Slice dikombinasikan dengan map
+
+	var mahasiswa = []map[string]string{
+		{
+			"firstName": "Muhammad",
+			"lastName":  "Satrio",
+		},
+		{
+			"firstName": "Haya",
+			"lastName":  "Majidatul",
+		},
+	}
+	fmt.Println(mahasiswa)
 }
