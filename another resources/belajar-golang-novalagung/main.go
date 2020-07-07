@@ -28,6 +28,14 @@ func divideNumber(m, n int) {
 	fmt.Printf("%d / %d = %d\n", m, n, res)
 }
 
+func calculate(d float64) (float64, float64) {
+	var area = math.Pi * math.Pow(d/2, 2)
+
+	var circumference = math.Pi * d
+
+	return area, circumference
+}
+
 func main() {
 	fmt.Println("hello world")
 
@@ -297,4 +305,12 @@ func main() {
 
 	divideNumber(10, 2)
 	divideNumber(4, 0)
+
+	// Penggunaan fungsi multiple return
+
+	var diameter float64 = 15
+	var area, circumference = calculate(diameter)
+
+	fmt.Printf("luas lingkaran: %.2f\n", area)
+	fmt.Printf("keliling lingkaran: %.2f\n", circumference)
 }
