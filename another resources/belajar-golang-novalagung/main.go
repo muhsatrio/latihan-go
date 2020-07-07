@@ -36,6 +36,24 @@ func calculate(d float64) (float64, float64) {
 	return area, circumference
 }
 
+func calculateAverage(numbers ...int) float64 {
+	var total int = 0
+
+	for _, number := range numbers {
+		total += number
+	}
+
+	var avg = float64(total) / float64(len(numbers))
+	return avg
+}
+
+func myHobbies(name string, hobbies ...string) {
+	var convertHobbiesToString = strings.Join(hobbies, ", ")
+
+	fmt.Printf("Hello, my name is %s\n", name)
+	fmt.Printf("My hobbies are: %s\n", convertHobbiesToString)
+}
+
 func main() {
 	fmt.Println("hello world")
 
@@ -313,4 +331,19 @@ func main() {
 
 	fmt.Printf("luas lingkaran: %.2f\n", area)
 	fmt.Printf("keliling lingkaran: %.2f\n", circumference)
+
+	// Penggunaan fungsi variadic
+
+	var avg = calculateAverage(1, 2, 3, 4, 5)
+	var numbers = []int{
+		1, 2, 3, 4, 5, 6, 7,
+	}
+	fmt.Printf("Rata-rata: %.2f\n", avg)
+	fmt.Printf("Rata-rata: %.2f\n", calculateAverage(numbers...)) //fungsi variadic dengan data slice
+	var listHobbies = []string{
+		"makan",
+		"minum",
+		"tidur",
+	}
+	myHobbies("satrio", listHobbies...)
 }
