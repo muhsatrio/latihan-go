@@ -3,7 +3,30 @@ package main
 import (
 	"fmt"
 	"math"
+	"math/rand"
+	"strings"
+	"time"
 )
+
+func printMessage(message string, arr []string) {
+	var nameString = strings.Join(arr, " ")
+	fmt.Println(message, nameString)
+}
+
+func randomWithRange(min, max int) int {
+	var value = min + rand.Intn(max-min)
+	return value
+}
+
+func divideNumber(m, n int) {
+	if n == 0 {
+		fmt.Printf("Invalid divider, %d cannot divided by %d\n", m, n)
+		return
+	}
+
+	var res = m / n
+	fmt.Printf("%d / %d = %d\n", m, n, res)
+}
 
 func main() {
 	fmt.Println("hello world")
@@ -246,4 +269,32 @@ func main() {
 		},
 	}
 	fmt.Println(mahasiswa)
+
+	// Penggunaan fungsi
+
+	var names = []string{
+		"Muhammad",
+		"Satrio",
+	}
+	printMessage("sampurasun", names)
+
+	// Penggunaan fungsi dengan return
+
+	rand.Seed(time.Now().Unix())
+
+	var randomValue int
+
+	randomValue = randomWithRange(2, 20)
+	fmt.Println("random number:", randomValue)
+
+	randomValue = randomWithRange(2, 10)
+	fmt.Println("random number:", randomValue)
+
+	randomValue = randomWithRange(2, 10)
+	fmt.Println("random number:", randomValue)
+
+	// Penggunaan return untuk menghentikan proses dalam fungsi
+
+	divideNumber(10, 2)
+	divideNumber(4, 0)
 }
