@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Peeps</title>
+</head>
+<body>
+    {{range .Identitas}}
+    {{uc .Nama}} - {{ft .Zodiak}} - {{.Umur}} tahun
+    {{end}}
+    {{range .Kelas}}
+    {{ft .Nama}} - {{.Kapasitas}} orang
+    {{end}}
+</body>
+</html>
