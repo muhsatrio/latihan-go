@@ -66,6 +66,23 @@ func findMax(numbers []int, max int) (int, func() []int) {
 	}
 }
 
+// FilterCallback type
+type FilterCallback func(string) bool
+
+func filter(data []string, callback FilterCallback) []string {
+	var result []string
+	for _, each := range data {
+		if filtered := callback(each); filtered {
+			result = append(result, each)
+		}
+	}
+	return result
+}
+
+func change(original *int, value int) {
+	*original = value
+}
+
 func main() {
 	fmt.Println("hello world")
 
@@ -403,5 +420,54 @@ func main() {
 
 	fmt.Println(lengthNum)
 	fmt.Println(getNumbers())
+
+	// Penerapan fungsi sebagai parameter
+
+	data := []string{"muhammad", "satrio", "wicaksono"}
+	var dataContainsW = filter(data, func(each string) bool {
+		return strings.Contains(each, "w")
+	})
+	var dataLength6 = filter(data, func(each string) bool {
+		return len(each) == 6
+	})
+	fmt.Println(dataContainsW)
+	fmt.Println(dataLength6)
+
+	// Penerapan pointer
+
+	var numberA int = 4
+	var numberB *int = &numberA
+
+	fmt.Println("numberA value: ", numberA)
+	fmt.Println("numberA address: ", &numberA)
+
+	fmt.Println("numberB value: ", *numberB)
+	fmt.Println("numberB address: ", numberB)
+
+	numberA = 8
+
+	fmt.Println("numberA value: ", numberA)
+	fmt.Println("numberA address: ", &numberA)
+
+	fmt.Println("numberB value: ", *numberB)
+	fmt.Println("numberB address: ", numberB)
+
+	*numberB = 10
+
+	fmt.Println("numberA value: ", numberA)
+	fmt.Println("numberA address: ", &numberA)
+
+	fmt.Println("numberB value: ", *numberB)
+	fmt.Println("numberB address: ", numberB)
+
+	// Pointer sebagai parameter dalam fungsi
+
+	var number = 4
+
+	fmt.Println("Before: ", number)
+
+	change(&number, 10)
+
+	fmt.Println("After: ", number)
 
 }
