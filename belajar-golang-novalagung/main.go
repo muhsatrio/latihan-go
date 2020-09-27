@@ -8,6 +8,63 @@ import (
 	"time"
 )
 
+// Student struct
+type Student struct {
+	name  string
+	grade int
+}
+
+// Person struct
+type Person struct {
+	name string
+	age  int
+}
+
+// Stud struct
+type Stud struct {
+	grade  int
+	age    int
+	person Person
+}
+
+// StudJSON struct
+type StudJSON struct {
+	person struct {
+		name string
+		age  int
+	}
+	grade   int
+	hobbies []string
+}
+
+// Employee struct
+type Employee struct {
+	name string
+	age  int
+}
+
+func (e Employee) sayHello() {
+	fmt.Println("halo", e.name)
+}
+
+func (e Employee) getNameAt(i int) string {
+	return strings.Split(e.name, " ")[i-1]
+}
+
+// Method Pointer
+
+func (e Employee) changeName1(name string) {
+	// e.name berubah hanya di method changeName1
+	fmt.Println("changed with changeName1")
+	e.name = name
+}
+
+func (e *Employee) changeName2(name string) {
+	// e.name berubah termasuk nilai pada reference objeknya
+	fmt.Println("changed with changeName2")
+	e.name = name
+}
+
 func printMessage(message string, arr []string) {
 	var nameString = strings.Join(arr, " ")
 	fmt.Println(message, nameString)
@@ -470,4 +527,71 @@ func main() {
 
 	fmt.Println("After: ", number)
 
+	// Latihan struct
+
+	var s1 Student
+	s1.name = "satrio wicaksono"
+	s1.grade = 2
+
+	var s2 = Student{"satrio", 2}
+
+	var s3 = Student{
+		name:  "wicaksono",
+		grade: 3,
+	}
+
+	fmt.Println("nama: ", s1.name)
+	fmt.Println("grade: ", s1.grade)
+
+	fmt.Println("nama: ", s2.name)
+	fmt.Println("grade: ", s2.grade)
+
+	fmt.Println("nama: ", s3.name)
+	fmt.Println("grade: ", s3.grade)
+
+	// Variabel Objek Pointer
+
+	var s4 *Student = &s1
+
+	s4.name = "wicaksono satrio"
+
+	fmt.Println("nama s1: ", s1.name)
+	fmt.Println("nama s4: ", s4.name)
+
+	// Embedded Struct
+
+	var s5 = Stud{
+		age: 21,
+		person: Person{
+			name: "sat",
+			age:  30,
+		},
+	}
+	fmt.Println(s5.age)
+	fmt.Println(s5.person.age)
+	fmt.Println(s5.person.name)
+
+	// Anonymous struct
+
+	var murid = struct {
+		name string
+		age  int
+	}{
+		name: "satrio",
+		age:  24,
+	}
+	fmt.Println(murid.name)
+	fmt.Println(murid.age)
+
+	// Penerapan method
+
+	var emply = Employee{"indomaret kusuka", 5}
+	emply.sayHello()
+	fmt.Println("halo halo", emply.getNameAt(2))
+
+	// Method pointer
+	emply.changeName1("wicaksono satrio")
+	emply.sayHello()
+	emply.changeName2("satrio wicaksono")
+	emply.sayHello()
 }
